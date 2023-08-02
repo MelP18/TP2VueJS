@@ -5,7 +5,7 @@
                 <div class="payment__form__content">
                     <div class="form__content__top">
                         <div class="payment__icon">
-                            <PaymentMobileIcon />
+                            <PaymentIcon />
                         </div>
                         <p>Total à payer</p>
                         <div class="amount__to__pay">
@@ -48,14 +48,15 @@
 </template>
 
 <script lang="ts" setup>
+
 import CreditCard from '@/components/CreditCard.vue';
 import PaymentMobileIcon from '@/components/icons/PaymentMobileIcon.vue';
+import PaymentIcon from '@/components/PaymentIcon.vue'
 import FormFieldPayment from '@/components/FormFieldPayment.vue'
 import FormFieldPaymentNotAvailable from '@/components/FormFieldPaymentNotAvailable.vue'
 import {ref} from 'vue'
- const bool = ref({is_available:false})
- console.log(bool);
 
+ const bool = ref({is_available:Boolean})
 </script>
 
 
@@ -74,18 +75,27 @@ import {ref} from 'vue'
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: rgb(176, 171, 171);
 }
-.block__content {
-    box-shadow: 0px 0px  5px;
+.block__content{
+   box-shadow: 0px 0px 5px rgb(199, 80, 51); 
+    width: 30%;
+    height: 391px;
+    overflow-y: scroll;
 }
-
+.block__content::-webkit-scrollbar{
+    width: 5px;
+}
+.block__content::-webkit-scrollbar-thumb{
+    background-color: aquamarine;
+}
 .form__content__top {
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 5px;
     padding: 25px 0 15px 0;
-    background-color: bisque;
+    background-color: rgb(85, 6, 6);
 }
 
 .form__content__top .payment__icon {
@@ -109,9 +119,10 @@ import {ref} from 'vue'
 .form__content__middle {
     display: flex;
     flex-direction: column;
+    gap: 15px;
     text-align: center;
     padding: 15px 0;
-    background-color: rgb(244, 148, 24);
+    background-color: rgb(234, 148, 175);
 }
 
 .form__content__middle__select {
@@ -129,9 +140,12 @@ import {ref} from 'vue'
 .means__of__payment .payment {
     display: flex;
     justify-content: center;
-   
+    
 }
-
+.active{
+    background-color: aqua;
+    padding: 15px;
+}
 .form__content__bottom{
     display: flex;
     flex-direction: column;
@@ -185,7 +199,7 @@ import {ref} from 'vue'
 }
 .not__available{
     text-align: center;
-    background-color: rgb(234, 198, 152);
+    background-color:rgb(85, 6, 6);
     padding: 5px 0;
 }
 .footer p{
