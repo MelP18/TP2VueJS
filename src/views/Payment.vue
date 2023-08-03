@@ -33,7 +33,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import PaymentIcon from '@/components/PaymentIcon.vue'
 import FormFieldPayment from '@/components/FormFieldPayment.vue'
 import FormFieldPaymentNotAvailable from '@/components/FormFieldPaymentNotAvailable.vue'
@@ -120,7 +119,6 @@ function selectMode(value: Mode) {
 .amount__to__pay p {
     font-size: 25px;
 }
-
 .form__content__middle {
     display: flex;
     flex-direction: column;
@@ -129,7 +127,6 @@ function selectMode(value: Mode) {
     padding: 15px 0;
     background-color: rgb(249, 170, 195);
 }
-
 
 .form__content__bottom {
     display: flex;
@@ -167,7 +164,6 @@ function selectMode(value: Mode) {
     display: flex;
 
 }
-
 .select__country input {
     width: 100%;
     padding: 8px 0 8px 5px;
@@ -176,6 +172,7 @@ function selectMode(value: Mode) {
 
 .select__country select {
     border-right: none;
+
     padding: 8px 0 8px 5px;
     outline: 0;
     background-color: transparent;
