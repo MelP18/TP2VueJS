@@ -4,3 +4,9 @@
     <line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>
     </svg>
 </template>
+
+<style scoped>
+    svg{
+        color: red;
+    }
+</style>
