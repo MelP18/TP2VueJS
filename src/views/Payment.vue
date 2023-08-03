@@ -5,7 +5,7 @@
                 <div class="payment__form__content">
                     <div class="form__content__top">
                         <div class="payment__icon">
-                            <PaymentIcon />
+                            <PaymentIcon class="icon"/>
                         </div>
                         <p>Total à payer</p>
                         <div class="amount__to__pay">
@@ -17,14 +17,14 @@
                         <h3> Sélectionnez un mode de paiement </h3>
                         <div class="form__content__middle__select">
                             <div class="means__of__payment">
-                                <div class="payment">
-                                    <PaymentMobileIcon @click="bool.is_available = true"/>
+                                <div class="payment" @click="bool.is_available = true" >
+                                    <PaymentMobileIcon  />
                                 </div>
                                 <h5>Paiement Mobile</h5>
                             </div>
                             <div class="means__of__payment">
-                                <div class="payment">
-                                    <CreditCard @click="bool.is_available = false"/>
+                                <div class="payment" @click="bool.is_available = false">
+                                    <CreditCard />
                                 </div>
                                 <h5>Carte de crédit</h5>
                             </div>
@@ -75,29 +75,36 @@ import {ref} from 'vue'
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(176, 171, 171);
+    background-color: white;
 }
 .block__content{
-   box-shadow: 0px 0px 5px rgb(199, 80, 51); 
+   box-shadow: 0px 0px 5px  #4f4d4d; 
+    /* border: 1px solid red; */
     width: 30%;
-    height: 391px;
-    overflow-y: scroll;
+    height: 453px;
+    overflow-y: scroll; 
 }
 .block__content::-webkit-scrollbar{
     width: 5px;
 }
 .block__content::-webkit-scrollbar-thumb{
-    background-color: aquamarine;
+    background-color: rgb(185, 130, 130);
+    border-radius: 15px;
 }
 .form__content__top {
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    gap: 5px;
+    gap: 15px;
     padding: 25px 0 15px 0;
-    background-color: rgb(85, 6, 6);
+    background:linear-gradient(to bottom right,  #f81212 5%,#6b0419); 
 }
-
+.form__content__top p{
+    font-weight: bold;
+    color: white;
+    
+}
 .form__content__top .payment__icon {
     display: flex;
     justify-content: center;
@@ -110,11 +117,11 @@ import {ref} from 'vue'
     gap: 5px;
 }
 .amount__to__pay strong{
-    font-size: 20px;
+    font-size: 30px;
     color: white;
 }
 .amount__to__pay p{
-    font-size: 15px;
+    font-size: 25px;
 }
 .form__content__middle {
     display: flex;
@@ -122,7 +129,7 @@ import {ref} from 'vue'
     gap: 15px;
     text-align: center;
     padding: 15px 0;
-    background-color: rgb(234, 148, 175);
+    background-color: rgb(249, 170, 195);
 }
 
 .form__content__middle__select {
@@ -133,19 +140,23 @@ import {ref} from 'vue'
 .means__of__payment {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
     cursor: pointer;
 }
 
 .means__of__payment .payment {
     display: flex;
     justify-content: center;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid  #f81212;
+    border-radius: 5px;
     
 }
 .active{
-    background-color: aqua;
-    padding: 15px;
+    background-color: #f81212;
 }
+
 .form__content__bottom{
     display: flex;
     flex-direction: column;
@@ -193,18 +204,43 @@ import {ref} from 'vue'
 .form__field__amount__due {
     display: flex;
     justify-content: center;
-    background-color: red;
+    align-items: center;
+    background-color :rgb(205, 22, 22);
     padding: 10px 0;
     gap: 8px;
 }
+.form__field__amount__due strong{
+    color:white;
+    font-size: 18px;
+}
+.form__field__amount__due p{
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+}
 .not__available{
     text-align: center;
-    background-color:rgb(85, 6, 6);
+    background-color:rgb(205, 22, 22);
     padding: 5px 0;
+    
+}
+.not__available h1{
+    font-size: 25px;
+    color: white;
 }
 .footer p{
     text-align: center;
     padding: 15px;
 }
-
+.icon{
+    background-color: white;
+}
+.payment__icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 50px;
+}
 </style>
