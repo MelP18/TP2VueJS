@@ -130,32 +130,6 @@ function selectMode(value: Mode) {
     background-color: rgb(249, 170, 195);
 }
 
-.form__content__middle__select__means {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.means__of__payment {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    cursor: pointer;
-}
-
-.means__of__payment .payment {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: white;
-    border: 1px solid #f81212;
-    border-radius: 5px;
-    color: red;
-
-}
-
-.active {
-    background-color: #f81212;
-} */
 
 .form__content__bottom {
     display: flex;

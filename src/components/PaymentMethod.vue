@@ -33,20 +33,46 @@ watch(mode, (value) => {
     emits('update', value)
 })
 
-function choisirCarte(){
+/* function choisirCarte(){
     mode.value = 'carte'
 }
 
 function choisirMobile(){
     mode.value = 'mobile'
-}
+} */
 </script>
 
 <style scoped>
 .active {
-    /*  */
     color: white    !important;
     background-color: red !important;
+}
+
+.form__content__middle__select{
+    display: flex;
+    justify-content: space-evenly;
+}
+.form__content__middle__select__means {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.means__of__payment {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.means__of__payment .payment {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #f81212;
+    border-radius: 5px;
+    color: red;
+
 }
 
  
