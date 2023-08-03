@@ -5,7 +5,7 @@
                 <div class="payment__form__content">
                     <div class="form__content__top">
                         <div class="payment__icon">
-                            <PaymentIcon class="icon"/>
+                            <PaymentIcon class="icon" />
                         </div>
                         <p>Total à payer</p>
                         <div class="amount__to__pay">
@@ -13,29 +13,14 @@
                             <p>Fcfa</p>
                         </div>
                     </div>
-                    <div class="form__content__middle">
-                        <h3> Sélectionnez un mode de paiement </h3>
-                        <div class="form__content__middle__select">
-                            <div class="means__of__payment">
-                                <div class="payment" @click="bool.is_available = true" >
-                                    <PaymentMobileIcon  />
-                                </div>
-                                <h5>Paiement Mobile</h5>
-                            </div>
-                            <div class="means__of__payment">
-                                <div class="payment" @click="bool.is_available = false">
-                                    <CreditCard />
-                                </div>
-                                <h5>Carte de crédit</h5>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- mehthode de paiement todo -->
+                    <PaymentMethod @update="selectMode" />
                     <div class="form__content__bottom">
-                        <div class="ff" >
-                            <FormFieldPayment v-if="bool.is_available === true"/>
+                        <div class="ff" v-if="mode == 'mobile'">
+                            <FormFieldPayment />
                         </div>
-                        <div class="ff" >
-                            <FormFieldPaymentNotAvailable v-if="bool.is_available === false"/>
+                        <div class="ff" v-else>
+                            <FormFieldPaymentNotAvailable />
                         </div>
                         <div class="footer">
                             <p>Lorem ipsum dolor sit amet consectetur.</p>
@@ -49,14 +34,17 @@
 
 <script lang="ts" setup>
 
-import CreditCard from '@/components/CreditCard.vue';
-import PaymentMobileIcon from '@/components/icons/PaymentMobileIcon.vue';
 import PaymentIcon from '@/components/PaymentIcon.vue'
 import FormFieldPayment from '@/components/FormFieldPayment.vue'
 import FormFieldPaymentNotAvailable from '@/components/FormFieldPaymentNotAvailable.vue'
-import {ref} from 'vue'
+import { ref } from 'vue'
+import PaymentMethod from '@/components/PaymentMethod.vue';
+import { Mode } from '@/types/mode';
 
- const bool = ref({is_available:Boolean})
+const mode = ref<Mode>()
+function selectMode(value: Mode) {
+    mode.value = value
+}
 </script>
 
 
@@ -68,29 +56,34 @@ import {ref} from 'vue'
     font-size: 14px;
     z-index: 5;
     box-sizing: border-box;
-    color: black;
+   /*  color: black; */
 }
-.block{
+
+.block {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: white;
 }
-.block__content{
-   box-shadow: 0px 0px 5px  #4f4d4d; 
+
+.block__content {
+    box-shadow: 0px 0px 5px #4f4d4d;
     /* border: 1px solid red; */
     width: 30%;
     height: 453px;
-    overflow-y: scroll; 
+    overflow-y: scroll;
 }
-.block__content::-webkit-scrollbar{
+
+.block__content::-webkit-scrollbar {
     width: 5px;
 }
-.block__content::-webkit-scrollbar-thumb{
+
+.block__content::-webkit-scrollbar-thumb {
     background-color: rgb(185, 130, 130);
     border-radius: 15px;
 }
+
 .form__content__top {
     display: flex;
     flex-direction: column;
@@ -98,13 +91,15 @@ import {ref} from 'vue'
     text-align: center;
     gap: 15px;
     padding: 25px 0 15px 0;
-    background:linear-gradient(to bottom right,  #f81212 5%,#6b0419); 
+    background: linear-gradient(to bottom right, #f81212 5%, #6b0419);
 }
-.form__content__top p{
+
+.form__content__top p {
     font-weight: bold;
     color: white;
-    
+
 }
+
 .form__content__top .payment__icon {
     display: flex;
     justify-content: center;
@@ -116,13 +111,16 @@ import {ref} from 'vue'
     justify-content: center;
     gap: 5px;
 }
-.amount__to__pay strong{
+
+.amount__to__pay strong {
     font-size: 30px;
     color: white;
 }
-.amount__to__pay p{
+
+.amount__to__pay p {
     font-size: 25px;
 }
+
 .form__content__middle {
     display: flex;
     flex-direction: column;
@@ -149,19 +147,22 @@ import {ref} from 'vue'
     justify-content: center;
     padding: 10px;
     background-color: white;
-    border: 1px solid  #f81212;
+    border: 1px solid #f81212;
     border-radius: 5px;
-    
+    color: red;
+
 }
-.active{
+
+.active {
     background-color: #f81212;
 }
 
-.form__content__bottom{
+.form__content__bottom {
     display: flex;
     flex-direction: column;
     gap: 50px;
 }
+
 .form__content__bottom__field {
     display: flex;
     flex-direction: column;
@@ -175,11 +176,13 @@ import {ref} from 'vue'
     flex-direction: column;
     gap: 7px;
 }
-.form__field__name input{
+
+.form__field__name input {
     width: 100%;
     padding: 8px 0 8px 5px;
     outline: 0;
 }
+
 .form__field__tel {
     display: flex;
     flex-direction: column;
@@ -188,54 +191,64 @@ import {ref} from 'vue'
 
 .select__country {
     display: flex;
-    
+
 }
-.select__country input{
+
+.select__country input {
     width: 100%;
     padding: 8px 0 8px 5px;
     outline: 0;
 }
-.select__country select{
+
+.select__country select {
     border-right: none;
     padding: 8px 0 8px 5px;
     outline: 0;
     background-color: transparent;
 }
+
 .form__field__amount__due {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color :rgb(205, 22, 22);
+    background-color: rgb(205, 22, 22);
     padding: 10px 0;
     gap: 8px;
 }
-.form__field__amount__due strong{
-    color:white;
+
+.form__field__amount__due strong {
+    color: white;
     font-size: 18px;
 }
-.form__field__amount__due p{
-    color:white;
+
+.form__field__amount__due p {
+    color: white;
     font-size: 20px;
     font-weight: bold;
 }
-.not__available{
+
+.not__available {
     text-align: center;
-    background-color:rgb(205, 22, 22);
+    background-color: rgb(205, 22, 22);
     padding: 5px 0;
-    
+
 }
-.not__available h1{
+
+.not__available h1 {
     font-size: 25px;
     color: white;
 }
-.footer p{
+
+.footer p {
     text-align: center;
     padding: 15px;
 }
-.icon{
+
+.icon {
     background-color: white;
 }
-.payment__icon{
+
+.payment__icon {
     display: flex;
     justify-content: center;
     align-items: center;
