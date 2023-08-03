@@ -13,29 +13,13 @@
                             <p>Fcfa</p>
                         </div>
                     </div>
-                    <div class="form__content__middle">
-                        <h3> Sélectionnez un mode de paiement </h3>
-                        <div class="form__content__middle__select">
-                            <div class="means__of__payment">
-                                <div class="payment" @click="bool.is_available = true" >
-                                    <PaymentMobileIcon  />
-                                </div>
-                                <h5>Paiement Mobile</h5>
-                            </div>
-                            <div class="means__of__payment">
-                                <div class="payment" @click="bool.is_available = false">
-                                    <CreditCard />
-                                </div>
-                                <h5>Carte de crédit</h5>
-                            </div>
-                        </div>
-                    </div>
+                    <PaymentMethods/>
                     <div class="form__content__bottom">
                         <div class="ff" >
-                            <FormFieldPayment v-if="bool.is_available === true"/>
+                            <FormFieldPayment />
                         </div>
                         <div class="ff" >
-                            <FormFieldPaymentNotAvailable v-if="bool.is_available === false"/>
+                            <FormFieldPaymentNotAvailable />
                         </div>
                         <div class="footer">
                             <p>Lorem ipsum dolor sit amet consectetur.</p>
@@ -49,8 +33,7 @@
 
 <script lang="ts" setup>
 
-import CreditCard from '@/components/CreditCard.vue';
-import PaymentMobileIcon from '@/components/icons/PaymentMobileIcon.vue';
+import PaymentMethods from '@/components/PaymentMethods.vue'
 import PaymentIcon from '@/components/PaymentIcon.vue'
 import FormFieldPayment from '@/components/FormFieldPayment.vue'
 import FormFieldPaymentNotAvailable from '@/components/FormFieldPaymentNotAvailable.vue'
@@ -123,7 +106,7 @@ import {ref} from 'vue'
 .amount__to__pay p{
     font-size: 25px;
 }
-.form__content__middle {
+/* .form__content__middle {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -132,7 +115,7 @@ import {ref} from 'vue'
     background-color: rgb(249, 170, 195);
 }
 
-.form__content__middle__select {
+.form__content__middle__select__means {
     display: flex;
     justify-content: space-evenly;
 }
@@ -151,11 +134,10 @@ import {ref} from 'vue'
     background-color: white;
     border: 1px solid  #f81212;
     border-radius: 5px;
-    
 }
 .active{
     background-color: #f81212;
-}
+} */
 
 .form__content__bottom{
     display: flex;
@@ -191,12 +173,16 @@ import {ref} from 'vue'
     
 }
 .select__country input{
+    border-left:none;
+    border-right:1px solid gray;
+    border-top:1px solid gray;
+    border-bottom:1px solid gray;
     width: 100%;
     padding: 8px 0 8px 5px;
     outline: 0;
 }
 .select__country select{
-    border-right: none;
+   
     padding: 8px 0 8px 5px;
     outline: 0;
     background-color: transparent;
